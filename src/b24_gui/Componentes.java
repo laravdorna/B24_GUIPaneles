@@ -23,39 +23,46 @@ public class Componentes {
     JButton premer, limpar, boton;
     JTextArea atComentarios;
     JList lItems;
-    String[] items = {"Element", "HOLA", "adios"};
+    String[] items = {"DAM1", "DAM2", "ASIR1", "ASIR2"};
 
-    public void instanciarComponentes() {
+    public void instanciarComponentesVentana() {
 
         //inicializar
         marco = new JFrame("Boletin 24");
         panel = new JPanel();
-        panel1 = new JPanel();
-        panel2 = new JPanel();
-        premer = new JButton("PREMER");
-        limpar = new JButton("LIMPAR");
-        boton = new JButton("boton");
-        lNome = new JLabel("NOME: ");
-        tfNome = new JTextField();
-        lPassword = new JLabel("PASSWORD: ");
-        pfPassword = new JPasswordField(6);
-        atComentarios = new JTextArea("Area de texto ", 20, 10);
-        lItems = new JList(items);
 
         //caracteristicas
         marco.setSize(600, 800);
         panel.setSize(600, 800);
-        panel1.setSize(250, 300);
-        panel2.setSize(250, 300);
         panel.setBackground(Color.yellow);
-        panel1.setBackground(Color.red);
-        panel2.setBackground(Color.BLUE);
+    }
 
+    public void instanciarPanel1() {
+        panel1 = new JPanel();
+        premer = new JButton("PREMER");
+        limpar = new JButton("LIMPAR");
+        lNome = new JLabel("NOME: ");
+        tfNome = new JTextField();
+        lPassword = new JLabel("PASSWORD: ");
+        pfPassword = new JPasswordField(6);
+
+        panel1.setSize(250, 300);
+        panel1.setBackground(Color.red);
+      
+    }
+
+    public void instanciarPanel2() {
+        panel2 = new JPanel();
+        boton = new JButton("boton");
+        atComentarios = new JTextArea("Area de texto ", 20, 10);
+        lItems = new JList(items);
+
+        panel2.setSize(250, 300);
+        panel2.setBackground(Color.BLUE);
     }
 
     public void crearVentana() {
-
-        instanciarComponentes();
+        instanciarComponentesVentana();
         ordenarPanel1();
         ordenarPanel2();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
@@ -71,7 +78,7 @@ public class Componentes {
     }
 
     public void ordenarPanel1() {
-        instanciarComponentes();
+        instanciarPanel1();
         panel1.add(lNome);
         panel1.add(tfNome);
 
@@ -84,9 +91,9 @@ public class Componentes {
     }
 
     public void ordenarPanel2() {
-        instanciarComponentes();
-        panel2.add(atComentarios);
+        instanciarPanel2();
         panel2.add(lItems);
+        panel2.add(atComentarios);
         panel2.add(boton);
 
     }
