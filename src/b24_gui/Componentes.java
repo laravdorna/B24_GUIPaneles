@@ -76,7 +76,8 @@ public class Componentes implements ActionListener {
 
         panel.add(panel1);
         panel.add(panel2);
-
+        bLimpar.addActionListener(this);
+        boton.addActionListener(this);
         marco.add(panel);
 
         marco.setVisible(true);
@@ -107,7 +108,8 @@ public class Componentes implements ActionListener {
 
     /**
      * ***********************************
-     ** METODOS DE CREACION DE EVENTOS ** ***********************************
+     ** METODOS DE CREACION DE EVENTOS ** 
+     * ********************************
      */
     @Override
     public void actionPerformed(ActionEvent e) {
