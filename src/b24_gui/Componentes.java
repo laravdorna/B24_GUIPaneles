@@ -7,24 +7,31 @@ package b24_gui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.*;
 
 /**
  *
  * @author lvazquezdorna
  */
-public class Componentes {
+public class Componentes implements ActionListener {
 
     JFrame marco;
     JPanel panel, panel1, panel2;
     JLabel lNome, lPassword;
     JTextField tfNome;
     JPasswordField pfPassword;
-    JButton premer, limpar, boton;
+    JButton bPremer, bLimpar, boton;
     JTextArea atComentarios;
     JList lItems;
     String[] items = {"DAM1", "DAM2", "ASIR1", "ASIR2"};
 
+    /**
+     * ***********************************
+     ** METODOS DE VISUALIZACION DEL GUI **
+     * ************************************
+     */
     public void instanciarComponentesVentana() {
 
         //inicializar
@@ -39,8 +46,8 @@ public class Componentes {
 
     public void instanciarPanel1() {
         panel1 = new JPanel();
-        premer = new JButton("PREMER");
-        limpar = new JButton("LIMPAR");
+        bPremer = new JButton("PREMER");
+        bLimpar = new JButton("LIMPAR");
         lNome = new JLabel("NOME: ");
         tfNome = new JTextField();
         lPassword = new JLabel("PASSWORD: ");
@@ -48,7 +55,7 @@ public class Componentes {
 
         panel1.setSize(250, 300);
         panel1.setBackground(Color.red);
-      
+
     }
 
     public void instanciarPanel2() {
@@ -85,8 +92,8 @@ public class Componentes {
         panel1.add(lPassword);
         panel1.add(pfPassword);
 
-        panel1.add(premer);
-        panel1.add(limpar);
+        panel1.add(bPremer);
+        panel1.add(bLimpar);
 
     }
 
@@ -98,26 +105,31 @@ public class Componentes {
 
     }
 
-    /*
- public void boxLayaut() {
-        instanciarComponentes();
-
-        //linea que eliges el eje de cordenadas
-        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-        //hacer visible el marco 
-        añadirComponentes();
-        marco.setVisible(true);
-        //que cierre cuando se le de a la x
-        marco.setDefaultCloseOperation(3);//el 3 es la constante JFrame.EXIT_ON_CLOSE
-
-    }
-    public void crearPanel1() {
-        instanciarComponentes();
-
-    }
-
-    public void crearPanel2() {
-
-    }
+    /**
+     * ***********************************
+     ** METODOS DE CREACION DE EVENTOS ** ***********************************
      */
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
+        if (e.getSource() == bLimpar) {
+            //poner en blanco todos los campos
+            tfNome.setText("");
+            pfPassword.setText("");
+            atComentarios.setText("");
+            lItems.clearSelection();
+        } else if (e.getSource() == bPremer) {
+
+        } else if (e.getSource() == boton) {
+            if (lItems.isSelectionEmpty() == true) {
+                atComentarios.setText(tfNome.getText()
+                        + "\nCurso sin seleccionar");
+            } else {
+                atComentarios.setText(tfNome.getText() + "\n"
+                        + lItems.getSelectedValue());
+
+            }
+        }
+    }
+
 }
